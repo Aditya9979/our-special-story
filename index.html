@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Little Question For You ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffe4ec,#fff7fb);
+display:flex;align-items:center;justify-content:center;color:#4a2633}
+.card{width:min(92vw,650px);background:#fff;border-radius:24px;padding:34px 28px;text-align:center;
+box-shadow:0 18px 50px rgba(160,70,100,.18)}
+h1{margin:0 0 12px;font-size:30px}.question{font-size:22px;font-weight:700;min-height:70px;
+display:flex;align-items:center;justify-content:center}.buttons{position:relative;height:110px;margin-top:10px}
+button{border:0;border-radius:999px;padding:13px 30px;font-size:17px;font-weight:700;cursor:pointer;
+transition:.2s;box-shadow:0 6px 15px rgba(0,0,0,.12)}
+#yes{background:#ff4f81;color:#fff;position:absolute;left:38%;top:25px}
+#no{background:#eee;color:#555;position:absolute;left:56%;top:25px}
+#msg{min-height:28px;margin-top:10px;font-weight:600}
+.progress{font-size:13px;color:#9b7180;margin-bottom:18px}
+.heart{font-size:42px;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">❤️</div>
+  <h1>One Little Question...</h1>
+  <div class="progress" id="progress"></div>
+  <div class="question" id="question"></div>
+  <div class="buttons" id="buttons">
+    <button id="yes">Yes ❤️</button>
+    <button id="no">No</button>
+  </div>
+  <div id="msg"></div>
+</div>
+
+<script>
+//const questions = [
+//  "Did you propose to me? 💍",
+//  "Do you still remember our first special moment? 🥰",
+//  "Do I make you smile? 😊",
+//  "Will you go on a cute date with me? 🌹",
+//  "Will you choose me again? ❤️",
+//  "Do you love me? 💕"
+    //];
+
+    const questions = [
+        "Babu kya aap aaj yhi ruk skte ho ?",
+        "Kya tumne mujhe propose kiya tha, ya main hi itna handsome hoon ki tumhe karna pada? 😎❤️",
+
+        "Agar main tumhe chocolate doon, toh kya tum mujhe ek kiss dogi? 🍫😘",
+
+        "Kya tum mujhe roz thoda-thoda irritate karne ka lifetime contract logi? 😜",
+
+        "Kya tum mujhe har baar “No” bolne ke baad bhi secretly “Yes” bolna chahti ho? 😂",
+
+        "Will you choose me again? ❤️",
+
+        "Kya tum mujhse sach mein pyaar karti ho? 🥹❤️💕"
+
+    ];
+
+let i = 0;
+const q = document.getElementById("question");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const msg = document.getElementById("msg");
+const buttons = document.getElementById("buttons");
+const progress = document.getElementById("progress");
+
+function render(){
+  q.textContent = questions[i];
+  progress.textContent = `Question ${i+1} of ${questions.length}`;
+  msg.textContent = "";
+  yes.style.left = "38%";
+  yes.style.top = "25px";
+  no.style.left = "56%";
+  no.style.top = "25px";
+}
+function moveNo(){
+  const pad=5, bw=no.offsetWidth, bh=no.offsetHeight;
+  const maxX=Math.max(pad,buttons.clientWidth-bw-pad);
+  const maxY=Math.max(pad,buttons.clientHeight-bh-pad);
+  no.style.left=(pad+Math.random()*(maxX-pad))+"px";
+  no.style.top=(pad+Math.random()*(maxY-pad))+"px";
+  //msg.textContent="Hmm... try again 😜";
+}
+no.addEventListener("mouseenter",moveNo);
+no.addEventListener("touchstart",(e)=>{e.preventDefault();moveNo();},{passive:false});
+no.addEventListener("click",moveNo);
+
+yes.addEventListener("click",()=>{
+  i++;
+  if(i<questions.length){
+    render();
+  }else{
+    q.textContent="Yay! You said YES to everything! 🥹❤️";
+    progress.textContent="Completed";
+    yes.style.display="none";
+    no.style.display="none";
+    msg.innerHTML="You are officially mine. 💖;
+  }
+});
+render();
+</script>
+</body>
+</html>
