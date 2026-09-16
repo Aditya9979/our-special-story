@@ -1,546 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>For You ❤️</title>
 
     <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
         body {
             margin: 0;
-            min-height: 100vh;
-
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-
-            font-family: Arial, sans-serif;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffe0eb,
-                    #fff7fa
-                );
+            font-family: Arial;
+            background: linear-gradient(135deg, #ffd6e5, #fff5f8);
         }
 
-        .card {
-
+        .box {
             width: 90%;
-            max-width: 650px;
-
+            max-width: 600px;
             min-height: 400px;
-
             background: white;
-
             border-radius: 25px;
-
-            padding: 40px 25px;
-
             text-align: center;
-
-            box-shadow:
-                0 20px 50px
-                rgba(180, 60, 100, 0.18);
-        }
-
-        .heart {
-            font-size: 50px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.15);
         }
 
         h1 {
-            color: #e83e6f;
-
-            margin-top: 10px;
-        }
-
-        #progress {
-
-            color: #a27a86;
-
-            font-size: 14px;
-
-            margin-bottom: 20px;
+            color: #ff4778;
         }
 
         #question {
-
-            min-height: 80px;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
             font-size: 23px;
-
             font-weight: bold;
-
-            color: #442631;
-
-            padding: 10px;
+            margin: 50px 0;
         }
 
-        .button-area {
-
+        #area {
             position: relative;
-
             height: 150px;
-
-            width: 100%;
-
-            margin-top: 10px;
-
-            overflow: hidden;
         }
 
         button {
-
+            position: absolute;
+            padding: 14px 30px;
             border: none;
-
             border-radius: 30px;
-
-            padding: 14px 32px;
-
             font-size: 17px;
-
             font-weight: bold;
-
             cursor: pointer;
-
-            transition:
-                left 0.15s ease,
-                top 0.15s ease;
-
-            box-shadow:
-                0 7px 18px
-                rgba(0,0,0,0.12);
         }
 
         #yes {
-
-            position: absolute;
-
             left: 35%;
-
-            top: 40px;
-
-            background: #ff4f81;
-
+            background: #ff4778;
             color: white;
         }
 
         #no {
-
-            position: absolute;
-
             left: 55%;
-
-            top: 40px;
-
-            background: #eeeeee;
-
-            color: #444;
+            background: #eee;
+            color: #333;
         }
 
-        #message {
-
-            min-height: 30px;
-
-            color: #e83e6f;
-
-            font-weight: bold;
-        }
-
-        #finalScreen {
-
+        #final {
             display: none;
         }
 
-        #finalImage {
-
-            width: 100%;
-
-            max-width: 400px;
-
+        #final img {
+            max-width: 90%;
             border-radius: 20px;
-
-            margin-top: 20px;
-
-            box-shadow:
-                0 10px 30px
-                rgba(0,0,0,0.2);
         }
-
-        .finalText {
-
-            font-size: 20px;
-
-            line-height: 1.6;
-
-            color: #555;
-        }
-
     </style>
-
 </head>
-
 
 <body>
 
+<div class="box">
 
-<div class="card">
+    <div id="game">
 
+        <div style="font-size:50px;">❤️</div>
 
-    <!-- QUESTION SCREEN -->
-
-    <div id="questionScreen">
-
-        <div class="heart">
-            ❤️
-        </div>
-
-        <h1>
-            One Little Question...
-        </h1>
-
-        <div id="progress"></div>
+        <h1>One Little Question...</h1>
 
         <div id="question"></div>
 
+        <div id="area">
 
-        <div class="button-area"
-             id="buttonArea">
+            <button id="yes">YES ❤️</button>
 
-            <button id="yes">
-                Yes ❤️
-            </button>
-
-            <button id="no">
-                No 😜
-            </button>
+            <button id="no">NO 😜</button>
 
         </div>
 
-
-        <div id="message"></div>
+        <div id="msg"></div>
 
     </div>
 
 
+    <div id="final">
 
-    <!-- FINAL SCREEN -->
+        <div style="font-size:50px;">🥹❤️</div>
 
-    <div id="finalScreen">
+        <h1>You Said YES! 🎉</h1>
 
-        <div class="heart">
-            🥹❤️
-        </div>
-
-        <h1>
-            You Said YES! 🎉
-        </h1>
-
-        <p class="finalText">
-
+        <p>
             I knew you would say YES! 😍
-
             <br><br>
-
             You are my favourite person ❤️
-
             <br>
-
             Forever Us 🥰
-
         </p>
 
+        <img src="final-photo.jpg">
 
-        <!--
-        Put your photo in the same folder
-        and name it:
-
-        final-photo.jpg
-        -->
-
-        <img
-            id="finalImage"
-            src="final-photo.jpg"
-            alt="Our Photo"
-        >
-
-
-        <p class="finalText">
-
-            ❤️ I Love You ❤️
-
-        </p>
+        <h2>❤️ I Love You ❤️</h2>
 
     </div>
-
 
 </div>
 
 
-
 <script>
 
-    // ==========================
-    // QUESTIONS
-    // ==========================
+const questions = [
+    "Kya tumne mujhe propose kiya tha? 💍",
+    "Kya main tumhara favourite notification hoon? 📱❤️",
+    "Kya main tumhari favourite headache hoon? 😂❤️",
+    "Kya tum mere saath lifetime bakchodi karogi? 😜",
+    "Agar main chocolate doon toh hug milega? 🍫🤗",
+    "Kya tum mere saath romantic date par chalogi? 🌹",
+    "Kya main tumhare liye special hoon? 🥹❤️",
+    "Kya tum mere saath budhape tak rahogi? 👴🏻👵🏻❤️",
+    "Kya tum mujhse pyaar karti ho? ❤️"
+];
 
-    const questions = [
+let index = 0;
 
-        "Kya tumne mujhe propose kiya tha? 💍",
+const question = document.getElementById("question");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const area = document.getElementById("area");
+const msg = document.getElementById("msg");
 
-        "Kya main tumhara favourite notification hoon? 📱❤️",
+function showQuestion() {
 
-        "Kya main tumhari life ka favourite headache hoon? 😂❤️",
+    question.innerHTML = questions[index];
 
-        "Kya tum mere saath lifetime bakchodi karogi? 😜",
+    yes.style.left = "35%";
+    yes.style.top = "20px";
 
-        "Agar main tumhe chocolate doon, toh hug milega? 🍫🤗",
+    no.style.left = "55%";
+    no.style.top = "20px";
 
-        "Kya tum mere saath ek romantic date par chalogi? 🌹",
+    msg.innerHTML = "";
+}
 
-        "Kya main tumhare liye special hoon? 🥹❤️",
+function moveNo() {
 
-        "Kya tum mere saath budhape tak rehogi? 👴🏻👵🏻❤️",
+    const maxX = area.clientWidth - no.offsetWidth;
+    const maxY = area.clientHeight - no.offsetHeight;
 
-        "Aur sabse important... Kya tum mujhse pyaar karti ho? ❤️"
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-    ];
+    no.style.left = x + "px";
+    no.style.top = y + "px";
 
-
-    // ==========================
-    // VARIABLES
-    // ==========================
-
-    let currentQuestion = 0;
-
-
-    const questionElement =
-        document.getElementById("question");
-
-
-    const progressElement =
-        document.getElementById("progress");
-
-
-    const yesButton =
-        document.getElementById("yes");
-
-
-    const noButton =
-        document.getElementById("no");
+    msg.innerHTML = "Nice try 😜❤️";
+}
 
 
-    const buttonArea =
-        document.getElementById("buttonArea");
+// DESKTOP
+no.addEventListener("mouseover", moveNo);
 
 
-    const messageElement =
-        document.getElementById("message");
+// MOBILE
+no.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    moveNo();
+});
 
 
-    // ==========================
-    // SHOW QUESTION
-    // ==========================
-
-    function showQuestion() {
-
-        questionElement.innerText =
-            questions[currentQuestion];
+// IF SOMEHOW CLICKED
+no.addEventListener("click", function(e) {
+    e.preventDefault();
+    moveNo();
+});
 
 
-        progressElement.innerText =
-            "Question " +
-            (currentQuestion + 1) +
-            " of " +
-            questions.length;
+// YES
+yes.addEventListener("click", function() {
 
+    index++;
 
-        messageElement.innerText = "";
+    if (index < questions.length) {
 
+        showQuestion();
 
-        // YES stays at same position
+    } else {
 
-        yesButton.style.left = "35%";
+        document.getElementById("game").style.display = "none";
 
-        yesButton.style.top = "40px";
-
-
-        // NO starts from same position
-
-        noButton.style.left = "55%";
-
-        noButton.style.top = "40px";
+        document.getElementById("final").style.display = "block";
 
     }
 
+});
 
-
-    // ==========================
-    // MOVE NO BUTTON
-    // ==========================
-
-    function moveNoButton(event) {
-
-        if (event) {
-
-            event.preventDefault();
-
-        }
-
-
-        const areaWidth =
-            buttonArea.clientWidth;
-
-
-        const areaHeight =
-            buttonArea.clientHeight;
-
-
-        const buttonWidth =
-            noButton.offsetWidth;
-
-
-        const buttonHeight =
-            noButton.offsetHeight;
-
-
-        const maxX =
-            areaWidth - buttonWidth;
-
-
-        const maxY =
-            areaHeight - buttonHeight;
-
-
-        const randomX =
-            Math.max(
-                0,
-                Math.random() * maxX
-            );
-
-
-        const randomY =
-            Math.max(
-                0,
-                Math.random() * maxY
-            );
-
-
-        noButton.style.left =
-            randomX + "px";
-
-
-        noButton.style.top =
-            randomY + "px";
-
-
-        messageElement.innerText =
-            "Nice try 😜❤️";
-
-    }
-
-
-
-    // ==========================
-    // DESKTOP
-    // ==========================
-
-    noButton.addEventListener(
-        "mouseenter",
-        moveNoButton
-    );
-
-
-    // ==========================
-    // MOBILE
-    // ==========================
-
-    noButton.addEventListener(
-        "touchstart",
-        moveNoButton,
-        {
-            passive: false
-        }
-    );
-
-
-    // ==========================
-    // CLICK
-    // ==========================
-
-    noButton.addEventListener(
-        "click",
-        moveNoButton
-    );
-
-
-
-    // ==========================
-    // YES BUTTON
-    // ==========================
-
-    yesButton.addEventListener(
-        "click",
-        function() {
-
-            currentQuestion++;
-
-
-            if (
-                currentQuestion <
-                questions.length
-            ) {
-
-                showQuestion();
-
-            }
-
-            else {
-
-                document
-                    .getElementById(
-                        "questionScreen"
-                    )
-                    .style.display = "none";
-
-
-                document
-                    .getElementById(
-                        "finalScreen"
-                    )
-                    .style.display = "block";
-
-            }
-
-        }
-    );
-
-
-
-    // ==========================
-    // START
-    // ==========================
-
-    showQuestion();
+showQuestion();
 
 </script>
 
-
 </body>
-
 </html>
