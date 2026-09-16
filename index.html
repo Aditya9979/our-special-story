@@ -1,219 +1,974 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-    <title>For You ❤️</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Only For You ❤️</title>
+
 
     <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial;
-            background: linear-gradient(135deg, #ffd6e5, #fff5f8);
+
+        * {
+            box-sizing: border-box;
         }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd6e5,
+                    #fff5f8
+                );
+
+            padding: 20px;
+        }
+
 
         .box {
-            width: 90%;
+
+            width: 100%;
+
             max-width: 600px;
-            min-height: 400px;
+
+            min-height: 430px;
+
             background: white;
+
             border-radius: 25px;
+
             text-align: center;
-            padding: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,.15);
+
+            padding: 35px 25px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.15);
         }
+
+
+        .heart {
+
+            font-size: 50px;
+
+            margin-bottom: 10px;
+        }
+
 
         h1 {
+
             color: #ff4778;
+
+            margin: 10px 0 20px;
         }
 
-        #question {
-            font-size: 23px;
-            font-weight: bold;
-            margin: 50px 0;
-        }
 
-        #area {
-            position: relative;
-            height: 150px;
-        }
+        p {
 
-        button {
-            position: absolute;
-            padding: 14px 30px;
-            border: none;
-            border-radius: 30px;
+            color: #666;
+
             font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
+
+            line-height: 1.6;
         }
 
-        #yes {
-            left: 35%;
+
+        /* PASSWORD SCREEN */
+
+        #passwordScreen {
+
+            display: block;
+        }
+
+
+        #passwordInput {
+
+            width: 80%;
+
+            max-width: 350px;
+
+            padding: 14px;
+
+            border: 2px solid #ffd0dc;
+
+            border-radius: 30px;
+
+            outline: none;
+
+            font-size: 17px;
+
+            text-align: center;
+
+            margin: 15px 0;
+        }
+
+
+        #unlock {
+
+            position: static;
+
             background: #ff4778;
+
             color: white;
+
+            padding: 14px 30px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
         }
 
-        #no {
-            left: 55%;
-            background: #eee;
-            color: #333;
+
+        #passwordMessage {
+
+            color: #ff4778;
+
+            min-height: 30px;
+
+            margin-top: 15px;
+
+            font-weight: bold;
         }
 
-        #final {
+
+        /* QUESTION SCREEN */
+
+        #game {
+
             display: none;
         }
 
-        #final img {
-            max-width: 90%;
-            border-radius: 20px;
+
+        #question {
+
+            min-height: 100px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 23px;
+
+            font-weight: bold;
+
+            color: #442631;
+
+            margin: 25px 0;
         }
+
+
+        #progress {
+
+            color: #a27a86;
+
+            font-size: 14px;
+        }
+
+
+        #area {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 160px;
+
+            overflow: hidden;
+
+            margin-top: 10px;
+        }
+
+
+        #area button {
+
+            position: absolute;
+
+            padding: 14px 30px;
+
+            border: none;
+
+            border-radius: 30px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 7px 18px
+                rgba(0, 0, 0, 0.12);
+
+            transition:
+                left 0.15s ease,
+                top 0.15s ease;
+        }
+
+
+        #yes {
+
+            left: 35%;
+
+            top: 30px;
+
+            background: #ff4778;
+
+            color: white;
+        }
+
+
+        #no {
+
+            left: 55%;
+
+            top: 30px;
+
+            background: #eeeeee;
+
+            color: #333;
+        }
+
+
+        #msg {
+
+            min-height: 30px;
+
+            color: #ff4778;
+
+            font-weight: bold;
+        }
+
+
+        /* FINAL SCREEN */
+
+        #final {
+
+            display: none;
+        }
+
+
+        #final img {
+
+            width: 100%;
+
+            max-width: 400px;
+
+            max-height: 450px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            margin-top: 15px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.2);
+        }
+
+
+        .finalText {
+
+            font-size: 20px;
+
+            color: #555;
+
+            line-height: 1.7;
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="box">
+
+
+    <!-- ========================= -->
+    <!-- PASSWORD SCREEN -->
+    <!-- ========================= -->
+
+    <div id="passwordScreen">
+
+        <div class="heart">
+            🔐❤️
+        </div>
+
+
+        <h1>
+            This Is Only For You
+        </h1>
+
+
+        <p>
+
+            This little surprise is protected
+            <br>
+
+            because you're special to me. 🥰
+
+        </p>
+
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter our secret ❤️"
+        >
+
+
+        <br>
+
+
+        <button id="unlock">
+            Unlock ❤️
+        </button>
+
+
+        <div id="passwordMessage"></div>
+
+    </div>
+
+
+
+    <!-- ========================= -->
+    <!-- QUESTION GAME -->
+    <!-- ========================= -->
 
     <div id="game">
 
-        <div style="font-size:50px;">❤️</div>
 
-        <h1>One Little Question...</h1>
+        <div class="heart">
+            ❤️
+        </div>
+
+
+        <h1>
+            One Little Question...
+        </h1>
+
+
+        <div id="progress"></div>
+
 
         <div id="question"></div>
 
+
         <div id="area">
 
-            <button id="yes">YES ❤️</button>
 
-            <button id="no">NO 😜</button>
+            <button id="yes">
+                YES ❤️
+            </button>
+
+
+            <button id="no">
+                NO 😜
+            </button>
+
 
         </div>
 
+
         <div id="msg"></div>
+
 
     </div>
 
+
+
+    <!-- ========================= -->
+    <!-- FINAL SCREEN -->
+    <!-- ========================= -->
 
     <div id="final">
 
-        <div style="font-size:50px;">🥹❤️</div>
 
-        <h1>You Said YES! 🎉</h1>
+        <div class="heart">
+            🥹❤️
+        </div>
 
-        <p>
+
+        <h1>
+            You Said YES! 🎉
+        </h1>
+
+
+        <p class="finalText">
+
             I knew you would say YES! 😍
+
             <br><br>
+
             You are my favourite person ❤️
+
             <br>
+
             Forever Us 🥰
+
         </p>
 
-        <img src="final-photo.jpg">
 
-        <h2>❤️ I Love You ❤️</h2>
+        <!--
+            IMPORTANT:
+
+            Put your photo in the same GitHub folder
+            as index.html.
+
+            Photo name must be:
+
+            final-photo.jpg
+        -->
+
+
+        <img
+            src="final-photo.jpg"
+            alt="Our Special Photo"
+        >
+
+
+        <p class="finalText">
+
+            ❤️ I Love You ❤️
+
+            <br>
+
+            Always & Forever ♾️
+
+        </p>
+
 
     </div>
+
 
 </div>
 
 
+
 <script>
 
+
+/* =====================================================
+   PASSWORD
+   ===================================================== */
+
+
+/*
+    CHANGE YOUR PASSWORD HERE
+
+    Example:
+
+    const correctPassword = "AdityaLove";
+
+*/
+
+const correctPassword = "Mahitya";
+
+
+const passwordInput =
+    document.getElementById(
+        "passwordInput"
+    );
+
+
+const unlockButton =
+    document.getElementById(
+        "unlock"
+    );
+
+
+const passwordMessage =
+    document.getElementById(
+        "passwordMessage"
+    );
+
+
+unlockButton.addEventListener(
+    "click",
+    function () {
+
+        const enteredPassword =
+            passwordInput.value;
+
+
+        if (
+            enteredPassword ===
+            correctPassword
+        ) {
+
+            document.getElementById(
+                "passwordScreen"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "game"
+            ).style.display = "block";
+
+
+            showQuestion();
+
+        }
+
+        else {
+
+            passwordMessage.innerHTML =
+                "Wrong secret 😜❤️ Try again!";
+
+            passwordInput.value = "";
+
+        }
+
+    }
+);
+
+
+/* ENTER KEY */
+
+passwordInput.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            unlockButton.click();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   QUESTIONS
+   ===================================================== */
+
+
 const questions = [
+
     "Kya tumne mujhe propose kiya tha? 💍",
+
     "Kya main tumhara favourite notification hoon? 📱❤️",
+
     "Kya main tumhari favourite headache hoon? 😂❤️",
-    "Kya tum lifetime meri sir drdi le paogi ? 😜",
+
+    "Kya tum lifetime meri sir-dard le paogi? 😜❤️",
+
     "Agar main chocolate doon toh hug milega? 🍫🤗",
+
     "Kya tum mere saath romantic date par chalogi? 🌹",
+
     "Kya main tumhare liye special hoon? 🥹❤️",
+
     "Kya tum mere saath budhape tak rahogi? 👴🏻👵🏻❤️",
-    "Kya tum mujhse pyaar karti ho? ❤️"
+
+    "Kya tum mere saath lifetime bakchodi karogi? 😂❤️",
+
+    "Aur sabse important... Kya tum mujhse pyaar karti ho? ❤️"
+
 ];
+
 
 let index = 0;
 
-const question = document.getElementById("question");
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
-const area = document.getElementById("area");
-const msg = document.getElementById("msg");
+
+
+const question =
+    document.getElementById(
+        "question"
+    );
+
+
+const yes =
+    document.getElementById(
+        "yes"
+    );
+
+
+const no =
+    document.getElementById(
+        "no"
+    );
+
+
+const area =
+    document.getElementById(
+        "area"
+    );
+
+
+const msg =
+    document.getElementById(
+        "msg"
+    );
+
+
+const progress =
+    document.getElementById(
+        "progress"
+    );
+
+
+
+/* =====================================================
+   SHOW QUESTION
+   ===================================================== */
+
 
 function showQuestion() {
 
-    question.innerHTML = questions[index];
 
-    yes.style.left = "35%";
-    yes.style.top = "20px";
+    question.innerHTML =
+        questions[index];
 
-    no.style.left = "55%";
-    no.style.top = "20px";
+
+    progress.innerHTML =
+        "Question " +
+        (index + 1) +
+        " of " +
+        questions.length;
+
 
     msg.innerHTML = "";
+
+
+    /*
+        YES ALWAYS RETURNS
+        TO SAME POSITION
+    */
+
+
+    yes.style.left =
+        "35%";
+
+    yes.style.top =
+        "30px";
+
+
+    /*
+        NO RETURNS TO
+        ORIGINAL POSITION
+    */
+
+
+    no.style.left =
+        "55%";
+
+    no.style.top =
+        "30px";
+
 }
+
+
+
+/* =====================================================
+   MOVE NO BUTTON
+   ===================================================== */
+
 
 function moveNo() {
 
-    const maxX = area.clientWidth - no.offsetWidth;
-    const maxY = area.clientHeight - no.offsetHeight;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const maxX =
+        area.clientWidth -
+        no.offsetWidth;
 
-    no.style.left = x + "px";
-    no.style.top = y + "px";
 
-    msg.innerHTML = "Nice try 😜❤️";
+    const maxY =
+        area.clientHeight -
+        no.offsetHeight;
+
+
+    const x =
+        Math.random() *
+        Math.max(maxX, 1);
+
+
+    const y =
+        Math.random() *
+        Math.max(maxY, 1);
+
+
+    no.style.left =
+        x + "px";
+
+
+    no.style.top =
+        y + "px";
+
+
+    msg.innerHTML =
+        "Nice try 😜❤️";
+
 }
 
 
-// DESKTOP
-no.addEventListener("mouseover", moveNo);
+
+/* =====================================================
+   DESKTOP
+   ===================================================== */
 
 
-// MOBILE
-no.addEventListener("touchstart", function(e) {
-    e.preventDefault();
-    moveNo();
-});
+no.addEventListener(
+    "mouseenter",
+    moveNo
+);
 
 
-// IF SOMEHOW CLICKED
-no.addEventListener("click", function(e) {
-    e.preventDefault();
-    moveNo();
-});
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
 
 
-// YES
-yes.addEventListener("click", function() {
+no.addEventListener(
+    "touchstart",
+    function (event) {
 
-    index++;
+        event.preventDefault();
 
-    if (index < questions.length) {
+        moveNo();
 
-        showQuestion();
+    },
+    {
+        passive: false
+    }
+);
 
-    } else {
 
-        document.getElementById("game").style.display = "none";
 
-        document.getElementById("final").style.display = "block";
+/* =====================================================
+   CLICK
+   ===================================================== */
+
+
+no.addEventListener(
+    "click",
+    function (event) {
+
+        event.preventDefault();
+
+        moveNo();
+
+    }
+);
+
+
+
+/* =====================================================
+   YES BUTTON
+   ===================================================== */
+
+
+yes.addEventListener(
+    "click",
+    function () {
+
+
+        index++;
+
+
+        /*
+            MORE QUESTIONS
+        */
+
+
+        if (
+            index <
+            questions.length
+        ) {
+
+            showQuestion();
+
+        }
+
+
+        /*
+            ALL QUESTIONS COMPLETED
+        */
+
+
+        else {
+
+
+            /*
+                SEND COMPLETION
+                TO GOOGLE SHEET
+            */
+
+
+            sendCompletion();
+
+
+            /*
+                HIDE GAME
+            */
+
+
+            document.getElementById(
+                "game"
+            ).style.display =
+                "none";
+
+
+            /*
+                SHOW FINAL SCREEN
+            */
+
+
+            document.getElementById(
+                "final"
+            ).style.display =
+                "block";
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   GOOGLE SHEET NOTIFICATION
+   ===================================================== */
+
+
+/*
+    IMPORTANT:
+
+    Replace the URL below with your
+    Google Apps Script WEB APP URL.
+
+    Example:
+
+    https://script.google.com/macros/s/XXXXXXXX/exec
+*/
+
+
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxSeLd4_OwfMCBTQW2yUeDFOXYLmiKSA6_LPrMbkXuydM4q2IJgzhPRw_RCbRsU-Ynt/exec";
+
+
+
+function sendCompletion() {
+
+
+    /*
+        If URL has not been added,
+        don't try to send anything.
+    */
+
+
+    if (
+        GOOGLE_SCRIPT_URL ===
+        "https://script.google.com/macros/s/AKfycbxSeLd4_OwfMCBTQW2yUeDFOXYLmiKSA6_LPrMbkXuydM4q2IJgzhPRw_RCbRsU-Ynt/exec"
+    ) {
+
+        console.log(
+            "Google Script URL not configured."
+        );
+
+        return;
 
     }
 
-});
 
-showQuestion();
+    /*
+        Send completion event
+    */
+
+
+    fetch(
+        GOOGLE_SCRIPT_URL,
+        {
+
+            method: "POST",
+
+            mode: "no-cors",
+
+            headers: {
+
+                "Content-Type":
+                    "text/plain;charset=utf-8"
+
+            },
+
+            body: JSON.stringify({
+
+                status:
+                    "❤️ Completed All Questions",
+
+                totalQuestions:
+                    questions.length,
+
+                completedAt:
+                    new Date().toISOString()
+
+            })
+
+        }
+    )
+
+    .then(
+        function () {
+
+            console.log(
+                "Completion sent ❤️"
+            );
+
+        }
+    )
+
+    .catch(
+        function (error) {
+
+            console.log(
+                "Notification error:",
+                error
+            );
+
+        }
+    );
+
+}
+
 
 </script>
 
+
 </body>
+
 </html>
